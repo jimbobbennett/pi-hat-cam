@@ -1,0 +1,5 @@
+picamera
+azure-storage-blob
+python-dotenv
+psutil
+retry
