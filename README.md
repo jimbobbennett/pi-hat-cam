@@ -4,6 +4,8 @@ A cloud-connected hat/clothing camera powered by a Raspberry Pi and Azure.
 
 > This project builds a wearable, cloud connected camera. This is useful in situations where you want a record of what the camera sees stored in the cloud as quickly as possible. Make sure you use this in compliance will all applicable laws and privacy considerations.
 
+> This is video only, no audio. If you want to add audio, then I'd love a PR to add, or wait till I get a chance to add it.
+
 This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It continuously records short videos from the camera (by default 10 seconds in length), and uploads these to Azure blob storage. The ideal setup it a Pi Zero W due to it's small size and low power requirements, tethered to a mobile phone for internet access.
 
 > This uses a cloud service to store the videos, and therefor may incur a cost. If you have a free trial account, you can get $200 for the first 30 days which should more than cover the cost. Check out the [Blob storage pricing guide](https://azure.microsoft.com/pricing/details/storage/blobs/?WT.mc_id=pihatcam-github-jabenn) for more information on the cost of the service used.
@@ -102,7 +104,7 @@ Once your SD card is ready, configure the Pi for headless access by following th
 
 ### Deploy the Python code
 
-The Python code you need is in this repo.
+The Python code you need is in this repo in the `pi-app` folder.
 
 1. SSH into your Pi
 
@@ -123,7 +125,7 @@ The Python code you need is in this repo.
 1. Navigate to the folder containing the code
 
     ```sh
-    cd pi-hat-cam
+    cd pi-hat-cam/pi-app
     ```
 
 1. Create a [Python Virtual Environment](https://docs.python.org/3/tutorial/venv.html#:~:text=%20Virtual%20Environments%20and%20Packages%20¶%20%201,upgrade%2C%20and%20remove%20packages%20using%20a...%20More%20):
@@ -218,7 +220,7 @@ You can do this by adding an entry to the crontab. Cron is a tool that runs code
 
     ```sh
     sudo crontab -l > cron.tmp
-    echo "@reboot sleep 30 && cd /home/pi/pi-hat-cam && /home/pi/pi-hat-cam/.venv/bin/python /home/pi/pi-hat-cam/app.py" >> cron.tmp
+    echo "@reboot sleep 30 && cd /home/pi/pi-hat-cam/pi-app && /home/pi/pi-hat-cam/pi-app/.venv/bin/python /home/pi/pi-hat-cam/pi-app/app.py" >> cron.tmp
     sudo crontab cron.tmp
     rm cron.tmp
     ```
@@ -229,7 +231,7 @@ Test this out by rebooting the Pi. You should see video files appear in the Stor
 
 ## Download the video
 
-By creating short videos it helps ensure the videos are uploaded, but this is not the best for watching later. It would be easier if there was a way to reassemble the video. The `video_downloader.py` file has code to do this.
+By creating short videos it helps ensure the videos are uploaded, but this is not the best for watching later. It would be easier if there was a way to reassemble the video. The `video_downloader.py` file in the `downloader` folder has code to do this.
 
 This file needs a `.env` file set up the same as the main app, with the `BLOB_CONNECTION_STRING` value set. There are other values you can configure from the default, and this are listed in the code.
 
@@ -239,6 +241,12 @@ Ideally you should run this code on a device that is not the Pi, so that you can
 
     ```sh
     python3 -m venv .venv
+    ```
+
+    On Windows, use:
+
+    ```cmd
+    python -m venv .venv
     ```
 
 1. Activate the virtual environment:
@@ -277,4 +285,34 @@ This will download all the blobs, concatenating them into a single file called `
 
 ## Use the camera
 
+To use the camera, first it needs to be tethered to your phone or a WiFi hotspot to upload the videos. To tether:
 
+1. Connect to the Pi over SSH
+
+1. Start your WiFi hotspot, or enable tethering on your phone
+
+1. From your Pi, launch the configuration tool:
+
+    ```sh
+    sudo raspi-config
+    ```
+
+1. Select **2 Network options**
+
+    ![The pi config main menu](./images/pi-config-main-menu.png)
+
+1. Select **N2 Wireless LAN**
+
+    ![The network menu](./images/pi-config-network-menu.png)
+
+1. Enter the SSID and Password of your hotspot
+
+1.Select **Finish**
+
+1. When asked to reboot, select **Yes**
+
+When the Pi reboots, it will connect to your hotspot or phone.
+
+Power off the camera until you are ready to use it.
+
+Once you are ready to use it, connect the power and it will start recording as soon as it has booted up.
