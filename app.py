@@ -29,7 +29,8 @@ If you don't have a subscription you can sign up for free:
   services that have tiers that are always free.
 
 For instructions to set up the storage account, check out the README for this repo at
-https://GitHub.com/jimbobbennett/pi-hat-cam
+https://GitHub.com/jimbobbennett/pi-hat-cam. You can create this storage account at
+https://aka.ms/AA8xjmk.
 
 Once you have set up storage, create a .env file with the following values:
 
