@@ -1,4 +1,4 @@
-"""A Raspberry Pi app to capture video and upload to Azure Blob storageg.
+"""A Raspberry Pi app to capture video and upload to Azure Blob storage.
 
 Original code: https://github.com/jimbobbennett/pi-hat-cam
 
@@ -7,8 +7,8 @@ short bursts of video and uploads them to blob storage, retrying if there are an
 connection issues.
 
 The idea is to have a Pi Zero W tethered to a phone continuously uploading, and if signal is lost,
-it will keep retrying. The short bursts allow the videos to be upoaded quickly to avoid loss of
-videos if the signal is interrupted or the device ggets damaged. Files are named based on the
+it will keep retrying. The short bursts allow the videos to be uploaded quickly to avoid loss of
+videos if the signal is interrupted or the device gets damaged. Files are named based on the
 timestamp of when the recording started.
 
 To use this, you will need an Azure subscription, and a storage account set up.
@@ -43,11 +43,11 @@ RESOLUTION=<resolution of videos as w,h>
 * BLOB_CONNECTION_STRING needs to be set to the connection string for your storage account.
 * CONTAINER_NAME is optional and should be set to the name of the container. If you leave
   this out, the default of videos is used.
-* VIDEO_LENGTH is the length in seconds of each short video. This is optional, and if left out
+* VIDEO_LENGTH is optional and is the length in seconds of each short video. This is optional, and if left out
   defaults to 10s.
-* QUALITY is the quality of the video, ranging from 1 (highest quality), to 40 (lowest quality).
+* QUALITY is optional and is the quality of the video, ranging from 1 (highest quality), to 40 (lowest quality).
   The default is 30 which gives reasonable videos at about 500KB per 10 seconds at 720p.
-* RESOLUTION is the resolution of the videos to capture. This needs to be in a supported video
+* RESOLUTION is optional and is the resolution of the videos to capture. This needs to be in a supported video
   resolution for the camera. You can see the different resolutions supported in the Raspberry
   Pi Camera docs - https://www.raspberrypi.org/documentation/hardware/camera/. This should be as
   w,h for example 1280,720 for 720p resolution. The default is 720p
@@ -72,7 +72,7 @@ VIDEO_LENGTH = int(os.getenv("VIDEO_LENGTH", "10"))
 QUALITY = int(os.getenv("QUALITY", "30"))
 RESOLUTION = os.getenv("RESOLUTION", "1280,720")
 
-# Set up some contstants for saving files
+# Set up some constants for saving files
 VIDEO_FOLDER = "./videos"
 FILE_FORMAT = ".h264"
 GENERATOR_FILE_NAME = VIDEO_FOLDER + "/%d" + FILE_FORMAT
@@ -93,7 +93,7 @@ except:
     container_client.create_container()
     print("Container", CONTAINER_NAME, "created!")
 
-# Create the video ouput folder
+# Create the video output folder
 if not os.path.exists(VIDEO_FOLDER):
     os.makedirs(VIDEO_FOLDER)
 
@@ -214,7 +214,7 @@ async def main() -> Awaitable[None]:
     """The main function.
 
     This creates the upload queue, adding any existing files from a previous run. It then
-    starts the video capture and queue uploader functions
+    starts the video capture and queue upload functions
     """
     # Create the queue
     queue = asyncio.Queue()
@@ -224,7 +224,7 @@ async def main() -> Awaitable[None]:
     for file in filelist:
         await queue.put(VIDEO_FOLDER + "/" + file)
 
-    # Start the video capture and queue uploader functions
+    # Start the video capture and queue upload functions
     listeners = asyncio.gather(queue_worker(queue), video_capture(queue))
 
     # Start the main loop

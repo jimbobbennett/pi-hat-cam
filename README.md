@@ -227,8 +227,54 @@ This code writes a new entry that is run on reboot. First it sleeps for 30 secon
 
 Test this out by rebooting the Pi. You should see video files appear in the Storage Explorer in the Azure portal. Power the Pi off when done.
 
+## Download the video
+
+By creating short videos it helps ensure the videos are uploaded, but this is not the best for watching later. It would be easier if there was a way to reassemble the video. The `video_downloader.py` file has code to do this.
+
+This file needs a `.env` file set up the same as the main app, with the `BLOB_CONNECTION_STRING` value set. There are other values you can configure from the default, and this are listed in the code.
+
+Ideally you should run this code on a device that is not the Pi, so that you can view the video. You will need Python installed.
+
+1. From the folder the `video_downloader.py` is in, create a [Python Virtual Environment](https://docs.python.org/3/tutorial/venv.html#:~:text=%20Virtual%20Environments%20and%20Packages%20¶%20%201,upgrade%2C%20and%20remove%20packages%20using%20a...%20More%20):
+
+    ```sh
+    python3 -m venv .venv
+    ```
+
+1. Activate the virtual environment:
+
+    ```sh
+    source ./.venv/bin/activate
+    ```
+
+1. Install the Pip packages
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+1. Create a file called `.env` in your favorite text editor, such as [Visual Studio Code](https://code.visualstudio.com?WT.mc_id=pihatcam-github-jabenn)
+
+1. Add the following entry:
+
+    ```sh
+    BLOB_CONNECTION_STRING=<connection_string>
+    ```
+
+    Replace `<connection_string>` with the connection string you copied earlier.
+
+1. Run the code:
+
+    ```python
+    python video_downloader.py
+    ```
+
+This will download all the blobs, concatenating them into a single file called `downloaded_video.h264`. You can then view ths file in an app like [VLC](https://www.videolan.org/vlc/index.html).
+
+> The blobs are not deleted when you download them. You will need to manually delete them from the storage resource once you are finished with them.
+
 ## Create the wearable
 
-## Running the code
+## Use the camera
 
-## Download the video
+

@@ -13,7 +13,8 @@ CONTAINER_NAME=<blob container name>
 DOWNLOADED_VIDEO_NAME=>file name for the downloaded video>
 
 * BLOB_CONNECTION_STRING needs to be set to the connection string for your storage account.
-* CONTAINER_NAME needs to be the name of an existing container containing the blobs.
+* CONTAINER_NAME is optional, and needs to be the name of an existing container containing the blobs. If this
+  is not set it defaults to videos.
 * DOWNLOADED_VIDEO_NAME is optional and is the filename for the downloaded video. If this is
   not set if defaults to downloaded_video.h264
 """
@@ -24,7 +25,7 @@ from azure.storage.blob import BlobServiceClient
 # Load the environment variables
 load_dotenv()
 BLOB_CONNECTION_STRING = os.getenv("BLOB_CONNECTION_STRING")
-CONTAINER_NAME = os.getenv("CONTAINER_NAME")
+CONTAINER_NAME = os.getenv("CONTAINER_NAME", "videos")
 DOWNLOADED_VIDEO_NAME = os.getenv("DOWNLOADED_VIDEO_NAME", "downloaded_video.h264")
 
 # Connect to the Azure blob service
