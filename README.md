@@ -6,7 +6,9 @@ This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It
 
 This method allow resiliancy - if WiFi connection is lost the uploaded will keep retrying. If the device is damaged then everything already uploaded will be secure. Files are stored on the SD card and only deleted after successfully being uploaded, so if there is no internet connection, files can be grabbed off the SD card.
 
-This also allows audit trails - each 10 second video is named with the current timestamp, and Blob storage stores the time the file was uploaded.
+This also allows audit trails - each short video is named with the current timestamp, and Blob storage stores the time the file was uploaded.
+
+This code also includes a utility to download all the blobs and concatenate them into a single video file.
 
 ## Set up the application
 
@@ -20,6 +22,20 @@ Before you can run the application, you need an Azure subscription and a storage
 
 ### Set up the storage account
 
+An Azure storage account is a general purpose account to store data as files, queues, tables or blobs. In this app, each short video is stored as a blob in the storage account.
+
+To create a storagge account:
+
+1. Head to [ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM](https://aka.ms/AA8xjmk) to go straight to the create a new storage resource blade
+
+1. Sign in with your Azure account if necessary
+
+1. Select your Azure subscription
+
+1. For the *Resource group*, select **Create new**. Name the resource group `hatcam` then select **OK**
+
+
+
 ## Deploy the code
 
 ### Deploy the Python code
@@ -27,3 +43,5 @@ Before you can run the application, you need an Azure subscription and a storage
 ### Configure the app
 
 ## Create the wearable
+
+## Download the video
