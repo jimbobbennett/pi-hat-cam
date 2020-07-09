@@ -2,6 +2,8 @@
 
 A cloud-connected hat/clothing camera powered by a Raspberry Pi and Azure.
 
+![Jim in the hat cam](./images/make-jim-in-hat-cam.png)
+
 > This project builds a wearable, cloud connected camera. This is useful in situations where you want a record of what the camera sees stored in the cloud as quickly as possible. Make sure you use this in compliance will all applicable laws and privacy considerations.
 
 > This is video only, no audio. If you want to add audio, then I'd love a PR to add, or wait till I get a chance to add it.
@@ -21,7 +23,7 @@ This code also includes a utility to download all the blobs and concatenate them
 To make this, you will need:
 
 * A Raspberry Pi Zero W (must be the W with WiFi access)
-* A Raspberry Pi camera module and appropriate ribbon cable
+* A Raspberry Pi camera module and appropriate ribbon cable that is as long as possible. The V2 camera is the best as it is small with good quality. The HQ camera can be used but is bigger which makes it harder to mount on clothing.
 * An SD Card
 * A USB power pack and appropriate cable to power the Pi
 * A mobile phone to tether to
@@ -282,6 +284,44 @@ This will download all the blobs, concatenating them into a single file called `
 > The blobs are not deleted when you download them. You will need to manually delete them from the storage resource once you are finished with them.
 
 ## Create the wearable
+
+There's so many different pieces of clothing you could attach this to. In this guide I'm going to focus on a cap.
+
+You will need:
+
+* A cap that you don't mind making holes in
+* Scissors
+* Gaffer tape, or offcuts of fabric and needle and thread depending on how good you are at sewing (I'm not very good)
+* Double sided mounting tape
+* A USB power pack and USB cable that can reach from the pack in a pocket or strapped to a belt to the hat
+
+![All the parts - cap, gaffer tape, scissors, pi, camera](./images/make-all-parts.png)
+
+### Mount the camera
+
+1. Make a small hole in the front of the cap - big enough for the camera lens to fit through
+
+1. Place the camera inside the hat and push the lens through the hole. It might be easier to detach the camera from the board to pass it through the hole.
+
+    ![The camera poking through a hole](./images/make-camera-through-hole.png)
+
+1. Fix the camera in place on the front of the hat with double-sided mounting tape. You can use fabric glue, but be careful not to get any on the lens. This also reduces you ability to easily re-use the camera in a different make.
+
+1. Fix the camera circuit board in place inside the cap using gaffer tape
+
+   ![The camera module in the hat](./images/camera-mounted-in-hat.png)![The camera module taped in teh hat](./images/camera-taped-in-hat.png)
+
+1. Fix the camera ribbon cable to the inside of the cap, right through to the hole at the back. Use gaffer tape or sew it in place.
+
+    ![Ribbon cable taped into the hat](./images/cable-taped-in-hat.png)
+
+1. Mount the Raspberry Pi Zero W to the back of the cap, attaching the camera ribbon cable. Use double sided mounting tape, gaffer tape or sew it in place, whatever works. The USB sockets should point downwards.
+
+    ![The pi mounted to a hat](./images/make-pi-fixed-to-hat.png)
+
+1. Test out the connections - power the Pi over USB and make sure videos are being uploaded. Also test out the fit and camera position, adjust it as necessary using tape or fabric.
+
+![Jim in the hat cam](./images/make-jim-in-hat-cam.png)
 
 ## Use the camera
 
