@@ -347,7 +347,7 @@ To use the camera, first it needs to be tethered to your phone or a WiFi hotspot
 
 1. Enter the SSID and Password of your hotspot
 
-1.Select **Finish**
+1. Select **Finish**
 
 1. When asked to reboot, select **Yes**
 
