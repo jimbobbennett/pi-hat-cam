@@ -356,3 +356,7 @@ When the Pi reboots, it will connect to your hotspot or phone.
 Power off the camera until you are ready to use it.
 
 Once you are ready to use it, connect the power and it will start recording as soon as it has booted up.
+
+Here's the camera in action browsing this repo:
+
+![A video of this repo being browsed on a computer](./images/cam-video.gif)
