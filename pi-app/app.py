@@ -11,6 +11,8 @@ it will keep retrying. The short bursts allow the videos to be uploaded quickly 
 videos if the signal is interrupted or the device gets damaged. Files are named based on the
 timestamp of when the recording started.
 
+This code has one thread that reads from the camera, and a backround thread that uploads the videos.
+
 To use this, you will need an Azure subscription, and a storage account set up.
 
 If you don't have a subscription you can sign up for free:

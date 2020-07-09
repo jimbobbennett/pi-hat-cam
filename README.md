@@ -94,7 +94,7 @@ To connect to the storage account, you will need a connection string. To get thi
 
 ## Deploy the code
 
-Once you have the storage account, it's time to deploy the code.
+Once you have the storage account, it's time to deploy the code. The code is fully documented and commented, so check out the [`app.py`](./pi-app/app.py) file to see how it all works.
 
 ### Configure the Pi
 
