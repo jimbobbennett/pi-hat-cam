@@ -2,10 +2,10 @@
 
 A cloud-connected hat/clothing camera powered by a Raspberry Pi and Azure.
 
-![Jim in the hat cam](./images/make-jim-in-hat-cam.png)
+![Jim wearing a hat cam](./images/make-jim-in-hat-cam.png)
 
 > This project builds a wearable, cloud connected camera. This is useful in situations where you want a record of what the camera sees stored in the cloud as quickly as possible. Make sure you use this in compliance will all applicable laws and privacy considerations.
-
+> 
 > This is video only, no audio. If you want to add audio, then I'd love a PR to add, or wait till I get a chance to add it.
 
 This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It continuously records short videos from the camera (by default 10 seconds in length), and uploads these to Azure blob storage. The ideal setup it a Pi Zero W due to it's small size and low power requirements, tethered to a mobile phone for internet access.
@@ -66,7 +66,7 @@ To create a storage account:
 
 1. Leave the rest of the values as the defaults
 
-    ![The create storage form filled in](../images/portal-storage-all-details.png)
+    ![The create storage form filled in](./images/portal-storage-all-details.png)
 
 1. Select **Review + create**
 
