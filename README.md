@@ -5,14 +5,14 @@ A cloud-connected hat/clothing camera powered by a Raspberry Pi and Azure.
 ![Jim wearing a hat cam](./images/make-jim-in-hat-cam.png)
 
 > This project builds a wearable, cloud connected camera. This is useful in situations where you want a record of what the camera sees stored in the cloud as quickly as possible. Make sure you use this in compliance will all applicable laws and privacy considerations.
-> 
+>
 > This is video only, no audio. If you want to add audio, then I'd love a PR to add, or wait till I get a chance to add it.
 
-This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It continuously records short videos from the camera (by default 10 seconds in length), and uploads these to Azure blob storage. The ideal setup it a Pi Zero W due to it's small size and low power requirements, tethered to a mobile phone for internet access.
+This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It continuously records short videos from the camera (by default 10 seconds in length), and uploads these to Azure blob storage. The ideal setup it a Pi Zero W due to it's small size and low power requirements, tethered to a mobile phone or hotspot for internet access.
 
 > This uses a cloud service to store the videos, and therefor may incur a cost. If you have a free trial account, you can get $200 for the first 30 days which should more than cover the cost. Check out the [Blob storage pricing guide](https://azure.microsoft.com/pricing/details/storage/blobs/?WT.mc_id=pihatcam-github-jabenn) for more information on the cost of the service used.
 
-This method allow resiliency - if WiFi connection is lost the uploaded will keep retrying. If the device is damaged then everything already uploaded will be secure. Files are stored on the SD card and only deleted after successfully being uploaded, so if there is no internet connection, files can be grabbed off the SD card.
+This method allow resiliency - if WiFi connection is lost the upload will keep retrying. If the device is damaged then everything already uploaded will be secure. Files are stored on the SD card and only deleted after successfully being uploaded, so if there is no internet connection, files can be grabbed off the SD card.
 
 This also allows audit trails - each short video is named with the current timestamp, and Blob storage stores the time the file was uploaded.
 
