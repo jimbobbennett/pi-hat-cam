@@ -10,7 +10,7 @@ A cloud-connected hat/clothing camera powered by a Raspberry Pi and Azure.
 
 This app requires a Raspberry Pi connected to a Raspberry Pi Camera and WiFi. It continuously records short videos from the camera (by default 10 seconds in length), and uploads these to Azure blob storage. The ideal setup it a Pi Zero W due to it's small size and low power requirements, tethered to a mobile phone or hotspot for internet access.
 
-> This uses a cloud service to store the videos, and therefor may incur a cost. If you have a free trial account, you can get $200 for the first 30 days which should more than cover the cost. Check out the [Blob storage pricing guide](https://azure.microsoft.com/pricing/details/storage/blobs/?WT.mc_id=pihatcam-github-jabenn) for more information on the cost of the service used.
+> This uses a cloud service to store the videos, and therefor may incur a cost. If you have a free trial account, you can get $200 for the first 30 days which should more than cover the cost. Check out the [Blob storage pricing guide](https://azure.microsoft.com/pricing/details/storage/blobs/?WT.mc_id=academic-0000-jabenn) for more information on the cost of the service used.
 
 This method allow resiliency - if WiFi connection is lost the upload will keep retrying. If the device is damaged then everything already uploaded will be secure. Files are stored on the SD card and only deleted after successfully being uploaded, so if there is no internet connection, files can be grabbed off the SD card.
 
@@ -36,9 +36,9 @@ Before you can run the application, you need an Azure subscription and a storage
 
 ### Set up your Azure Subscription
 
-* If you are a student aged 18 and up and have an email address from an academic institution, you can sign up for the free Azure for Students offer at [azure.microsoft.com/free/students](https://azure.microsoft.com/free/students/?WT.mc_id=pihatcam-github-jabenn) without a credit card. At the time of writing this gives you $100 of credit to use over 12 months, as well as free tiers of a number of services for that 12 months. At the end of the 12 months, if you are still a student you can renew and get another $100 in credit and 12 months of free services.
+* If you are a student aged 18 and up and have an email address from an academic institution, you can sign up for the free Azure for Students offer at [azure.microsoft.com/free/students](https://azure.microsoft.com/free/students/?WT.mc_id=academic-0000-jabenn) without a credit card. At the time of writing this gives you $100 of credit to use over 12 months, as well as free tiers of a number of services for that 12 months. At the end of the 12 months, if you are still a student you can renew and get another $100 in credit and 12 months of free services.
 
-* If you are not a student, you can sign up at [azure.microsoft.com/free](https://azure.microsoft.com/free/?WT.mc_id=pihatcam-github-jabenn). You will need a credit card for verification purposes only, you will not be billed unless you decide to upgrade your account to a paid offering. At the time of writing the free account will give you US$200 of free credit to spend on what you like in the first 30 days, 12 months of free services, plus a load of services that have tiers that are always free.
+* If you are not a student, you can sign up at [azure.microsoft.com/free](https://azure.microsoft.com/free/?WT.mc_id=academic-0000-jabenn). You will need a credit card for verification purposes only, you will not be billed unless you decide to upgrade your account to a paid offering. At the time of writing the free account will give you US$200 of free credit to spend on what you like in the first 30 days, 12 months of free services, plus a load of services that have tiers that are always free.
 
 ### Set up the storage account
 
@@ -62,7 +62,7 @@ To create a storage account:
 
 1. For the location, select the one closest to where you will be using the camera.
 
-    > If you want to see the locations of the regions, check out the map in the [Azure global infrastructure guide](https://azure.microsoft.com/global-infrastructure/regions/?WT.mc_id=pihatcam-github-jabenn).
+    > If you want to see the locations of the regions, check out the map in the [Azure global infrastructure guide](https://azure.microsoft.com/global-infrastructure/regions/?WT.mc_id=academic-0000-jabenn).
 
 1. Leave the rest of the values as the defaults
 
@@ -263,7 +263,7 @@ Ideally you should run this code on a device that is not the Pi, so that you can
     pip install -r requirements.txt
     ```
 
-1. Create a file called `.env` in your favorite text editor, such as [Visual Studio Code](https://code.visualstudio.com?WT.mc_id=pihatcam-github-jabenn)
+1. Create a file called `.env` in your favorite text editor, such as [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=academic-0000-jabenn)
 
 1. Add the following entry:
 
